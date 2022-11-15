@@ -1,0 +1,20 @@
+
+{% extends 'women/base.html' %}
+
+{% block content %}
+<h1>{{work_one.title}}</h1>
+
+
+{% if work_one.photo %}
+<p><img class="img-article-left" src="{{work_one.photo.url}}"></p>
+{% endif %}
+{% for i in images %}
+    {% if work_one.id == i.post_id %}
+        <img class="img-article-left" src="{{i.image.url}}">
+    {% endif %}
+{% endfor %}
+
+{{work_one.content|linebreaks}}
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'women/base.html' %}
+
+{% block content %}
+
+<ul class="list-articles">
+	{% for wk in work %}
+			<li><div class="article-panel">
+	<p class="first">Категория: {{wk.cat}}</p>
+	<p class="last">Дата: {{wk.time_update|date:"d-m-Y H:i:s"}}</p>
+</div>
+
+{% if wk.photo %}
+	<p><img class="img-article-left thumb" src="{{wk.photo.url}}"></p>
+{% endif %}
+
+				<h2>{{wk.title}}</h2>
+	{% autoescape on %}
+	{{wk.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{{ wk.get_absolute_url }}">Читать пост</a></p>
+			</li>
+	{% endfor %}
+</ul>
+{% endblock %}

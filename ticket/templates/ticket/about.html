@@ -1,0 +1,14 @@
+{% extends 'women/base.html' %}
+
+{% block content %}
+{% for a in about %}
+    <h1>{{a.title}}</h1>
+
+
+{% if a.photo %}
+    <p><img class="img-article-left" src="{{a.photo.url}}"></p>
+{% endif %}
+
+{{a.content|linebreaks}}
+{% endfor %}
+{% endblock %}
